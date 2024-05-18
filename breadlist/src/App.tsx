@@ -5,6 +5,9 @@ import MainButton from './components/MainButton';
 import "./App.css";
 function App() { 
   return <div className = "prim" id='MainPage'>
+
+    
+
     <MainHeader/>
     <Text1/>
     <MainButton/>
