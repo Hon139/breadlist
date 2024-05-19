@@ -41,28 +41,3 @@ function App(){
 }
 
 export default App; 
-
-async function createListing(title, content) {
-  const response = await fetch('http://localhost:3001/createlisting', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title, content }),
-  });
-  const data = await response.json();
-  console.log('Created Listing ID:', data.id);
-}
-
-// Function to find listings
-async function findListings(age, ethnicity, gender) {
-  const response = await fetch('http://localhost:3001/findlistings', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ age, ethnicity, gender }),
-  });
-  const data = await response.json();
-  console.log('Found Listings:', data);
-}
