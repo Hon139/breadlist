@@ -1,23 +1,19 @@
-import Text1 from './MessageCont'; 
-import ListGroup from './components/ListGroup';
-import MainHeader from './components/MainHeader';
-import MainButton from './components/MainButton';
+
+import {BrowserRouter as Router,Routes,Route } from "react-router-dom"
+import LandingPage from './components/LandingPage';
+import ErrorPage from "./components/ErrorPage";
 import "./App.css";
 function App() { 
-  return <div className = "prim" id='MainPage'>
+  return <Router>
+    <a href = ""></a>
+      <Routes>
+        <Route path ="/" element = {<LandingPage/>}></Route>
+        <Route path ="/donor" element = {<LandingPage/>}></Route>
+        <Route path ="/student" element = {<LandingPage/>}></Route>
+        <Route path ="*" element = {<ErrorPage/>}></Route>
+      </Routes>
 
-    
-
-    <MainHeader/>
-    <Text1/>
-    <MainButton/>
-    <MainButton/>
-    <MainButton/>
-
-
-
-    </div>
-
+  </Router>
 }
 
 export default App; 
