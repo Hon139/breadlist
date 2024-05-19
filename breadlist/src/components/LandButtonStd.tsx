@@ -1,5 +1,10 @@
+
+import { useNavigate } from 'react-router-dom'; 
 function LandingButtonStd(){
-    return <button type="button" className="landbtn" id = "std" >Student Award Portal</button>
+    let navigate = useNavigate(); 
+    return <button onClick={() => {navigate("/Student")}
+
+    } type="button" className="landbtn" id = "std" >Student Award Portal</button>
 }
 
 export default LandingButtonStd; 

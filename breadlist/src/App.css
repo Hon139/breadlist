@@ -1,16 +1,31 @@
 #MainPage{
- 
-  /* background-color: #c8a74d; */
-  color: white;
-  padding: 40px;
-  font-family: Arial;
-  text-align: center;
-  height : 1200px; 
-  width  : 1580px;
+  background-image:url("./assets/Donors.png");
+  background-size: contain;
+  height : 865px; 
+  width  : 1520px;
   /* background-repeat: no-repeat; */
   /* background-attachment: fixed; */
 }
+#StudentPage{
+  background-image: url("./assets/Students.png");
+  background-size:contain;
+  height : 865px; 
+  width  : 1520px;
 
+}
+#ScholarshipPage{
+  background-image: url("./assets/AvailableScholarships.png");
+  background-size:contain;
+  height: 880px;
+  width: 1580px;
+
+}
+#addDonor{
+  background-image: url("./assets/ProvideScholarship.png");
+  background-size:contain;
+  height: 880px;
+  width: 1580px;
+}
 
 #mainHead{
   color: rgb(117, 58, 9);
@@ -18,10 +33,90 @@
 
 
 }
+.Section1{
+  border-radius: 25px;
+  background:#98fb98;
+  display:inline-block;
+  width: 1280px;
+  height:360px;
+  margin-left: 150px;
+  margin-top:460px;
 
-div{
-  overflow-x: hidden; 
 }
+
+.dropbtn {
+  background-color: #46cb4a;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 20px;
+  font-size: 25px;
+  font-family: 'LazyDog',cursive;
+  cursor: pointer;
+}
+#BTN1{
+  margin:-600px;
+}
+#BTN2{
+  margin: -400px;
+
+}
+#Drop1{
+  margin:-600px;
+  margin-top: 5px;
+}
+#Drop2{
+  margin-left:-400px;
+  margin-top: 5px
+}
+
+.dropdown {
+  margin-left:-275px;
+  top:-320px;
+  position: relative;
+  display: inline-block;
+  border:none;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background:none;
+  min-width: 160px;
+  border: none;
+  font-size: 18px;
+  text-align: left;
+  max-width: 10%;
+  text-decoration: none;
+  font-family: 'LazyDog',cursive,sans;
+}
+
+.dropdown-content a{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:active {background-color: #ff0000}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+ }
+ 
+.Submit{
+  border-radius: 25px;
+  background:#005c08;
+  display:inline-block;
+  width: 200px;
+  height:50px;
+  margin-left: 665px;
+  margin-top: 50px;
+  font-family: 'LazyDog',cursive;
+  color:white
+}
+
 
 .landing{
   background-image: url("./assets/Blank.png");
@@ -30,6 +125,19 @@ div{
   height: 855px;
   width: 1520px;
   overflow-x: hidden;
+}
+
+nav{
+  background-color: #248a28;
+  width: auto;
+  border-width: 2px; 
+
+}
+
+#landingLink{
+  color: white;
+  margin-left: 10px;
+  font-family: 'LazyDog',cursive;
 }
 
 #errorPanel{
@@ -82,4 +190,52 @@ div{
   font-family: 'LazyDog',cursive;
   text-align: center
 
+} 
+
+#CreatePagePanel {
+  background-image: url("./assets/create.png");
+  background-size:contain;
+  object-fit: fill;
+  height: 855px;
+  width: 1520px;
+  overflow-x: hidden;
+}
+
+#CreateButton {
+  background-color: #46cb4a;
+  color: white;
+  width: 200px;
+  height: 70px;
+  margin-top: 50%;
+  margin-left: 44%;
+   padding-left: 50px;
+  padding-right: 50px; 
+  border-radius: 20px;
+  font-size: 25px;
+  font-family: 'LazyDog',cursive;
+  cursor: pointer;
+}
+ 
+.Description{
+  font-family: 'LazyDog',cursive;
+  font-size: 24px;
+  margin-top:280px;
+  margin-left:204px;
+}
+.Name{
+  font-family: 'LazyDog',cursive;
+  margin-top:120px;
+  margin-left:290px;
+}
+.Wee{
+  font-family: 'LazyDog',cursive;
+  margin-top:20px;
+  margin-left:290px;
+  font-size: 28px;
+}
+.Title{
+  font-family: 'LazyDog',cursive;
+  margin-top:-30px;
+  margin-left:290px;
+  font-size: 28px;
 }
