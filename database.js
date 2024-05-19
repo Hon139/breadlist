@@ -1,36 +1,22 @@
 const { MongoClient } = require('mongodb');
 
 async function main() {
-    /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-    const uri = "mongodb+srv://SirBrandolf:8fCT2SReCdrQNaS9@cluster0.lftggle.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-    /**
-     * The Mongo Client you will use to interact with your database
-     * See https://mongodb.github.io/node-mongodb-native/3.6/api/MongoClient.html for more details
-     * In case: '[MONGODB DRIVER] Warning: Current Server Discovery and Monitoring engine is deprecated...'
-     * pass option { useUnifiedTopology: true } to the MongoClient constructor.
-     * const client =  new MongoClient(uri, {useUnifiedTopology: true})
-     */
+    const uri = "mongodb+srv://SirBrandolf:8fCT2SReCdrQNaS9@cluster0.lftggle.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
     const client = new MongoClient(uri);
 
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-
-        // Make the appropriate DB calls
-        // await listDatabases(client);
-
+        
         // Makes a User
         /*
         await createUser(client,
             {
                 username: "John Doe",
-                gender: "male",
-                race: "hispanic",
-                heritage: "christian",
+                gender: "Male",
+                race: "Hispanic",
+                heritage: "Christian",
                 age: 18,
                 email: "johndoe2005@aol.com",
                 password: "123password"
@@ -39,18 +25,39 @@ async function main() {
         */
 
         // Makes a Listing
-        /*
+        
         await createListing(client,
             {
-                monetaryAmount: 2000,
-                sponsorName: "Your mom",
-                targetAge: 18,
-                targetRace: "any",
-                targetGender: "any",
-                targetHeritage: "any"
+                monetaryAmount: 500,
+                sponsorName: "Richmond Hill HOA",
+                minAge: 0,
+                maxAge: 25,
+                targetRace: ["All"],
+                targetGender: ["All"],
+                targetHeritage: ["All"],
+                title: "Richmond Hill Community Education Fund",
+                content: "The Richmond Hill HOA proudly presents a community-sponsored "
+                    + "education fund for residents aged 0 to 25. This $500 grant supports educational pursuits, "
+                    + "from early childhood programs to college tuition. Designed to foster growth and development, the "
+                    + "fund aims to make learning accessible and affordable. Eligible residents can apply to receive "
+                    + "financial assistance, empowering our youth and young adults to achieve their academic "
+                    + "goals and build a brighter future."
+            }
+        );
+        
+
+        // Searches and Filters Listings
+        /*
+        await findListings(client,
+            {
+                age: 19,
+                race: "Hispanic",
+                gender: "Male",
+                heritage: "Christian"
             }
         );
         */
+        
 
     } catch (e) {
         console.error(e);
@@ -61,17 +68,6 @@ async function main() {
 }
 
 main().catch(console.error);
-
-/**
- * Print the names of all available databases
- * @param {MongoClient} client A MongoClient that is connected to a cluster
- */
-async function listDatabases(client) {
-    databasesList = await client.db().admin().listDatabases();
-
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
 
 // creates a new user
 async function createUser(client, newUser){
@@ -86,5 +82,42 @@ async function createListing(client, newListing){
 }
 
 // filters listing
+
+async function findListings(client, {
+    age = 0,
+    race = "",
+    gender = "",
+    heritage = "",
+    maximumNumberOfResults = Number.MAX_SAFE_INTEGER
+} = {}) {
+    const cursor = client.db("breadBankData").collection("scholarshipData").find(
+                            {
+                                minAge: { $lte: age },
+                                maxAge: { $gte: age },
+                                $or: [ { targetRace: race }, { targetRace: "All" } ],
+                                $or: [ { targetGender: gender }, { targetGender: "All" } ],
+                                $or: [ { targetHeritage: heritage }, { targetHeritage: "All" } ]
+                            }
+                            ).sort({ last_review: -1 })
+                            .limit(maximumNumberOfResults);
+
+    const results = await cursor.toArray();
+
+    if (results.length > 0) {
+        console.log(`Found the following scholarship(s):`);
+        results.forEach((result, i) => {
+            console.log();
+            console.log(`${i + 1}. Title: ${result.title}`);
+            console.log(`   _id: ${result._id}`);
+            console.log(`   Age Range: ${result.minAge} - ${result.maxAge}`);
+            console.log(`   Applicable Race(s): ${result.targetRace}`);
+            console.log(`   Applicable Gender: ${result.targetGender}`);
+            console.log(`   Applicable Heritage: ${result.targetHeritage}`);
+            console.log(`   Content: ${result.content}`);
+        });
+    } else {
+        console.log(`No scholarships were found with those specifications.`);
+    }
+}
 
 
