@@ -46,7 +46,7 @@ async function main() {
         */
 
         // Searches and Filters Listings
-        
+        /*
         await findListings(client,
             {
                 age: 19,
@@ -54,7 +54,7 @@ async function main() {
                 gender: "Male"
             }
         );
-        
+        */
         
 
     } catch (e) {
