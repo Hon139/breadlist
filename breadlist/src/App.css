@@ -1,13 +1,12 @@
 #MainPage{
-  background: rgb(213,187,121);
-  background: radial-gradient(circle, rgba(213,187,121,0.9848272072500875) 23%, rgba(220,179,49,1) 100%); 
+ 
   /* background-color: #c8a74d; */
   color: white;
   padding: 40px;
   font-family: Arial;
   text-align: center;
-  height : 1000px; 
-  width  : 1536px;
+  height : 1200px; 
+  width  : 1580px;
   /* background-repeat: no-repeat; */
   /* background-attachment: fixed; */
 }
@@ -20,16 +19,67 @@
 
 }
 
+div{
+  overflow-x: hidden; 
+}
 
+.landing{
+  background-image: url("./assets/Blank.png");
+  background-size:contain;
+  object-fit: fill;
+  height: 855px;
+  width: 1520px;
+  overflow-x: hidden;
+}
 
-.clicker{
-  background-color: #04AA6D;
-  border: none;
-  color: rgb(86, 18, 18);
-  padding: 15px 32px;
+#errorPanel{
+  background-image: url("./assets/ErrorBack.png");
+  background-size:contain;
+  height: 855px;
+  width: 1520px;
+  overflow-x: hidden;
+  overflow-y: hidden ;
+  background-repeat: no-repeat;
+}
+
+#errorMsg{
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  font-size: 100px;
+  font-family: 'LazyDog',cursive;
+  color: rgb(238, 14, 14);
+  margin-top: 300px;
+}
+
+.landingSubmission{
+  background-color: #a7c39a;
+  height: 100px;
+  width: 1520px;
+
+}
+
+.landbtn{
+  background-color: #46cb4a;
+  color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 20px;
+  font-size: 25px;
+  font-family: 'LazyDog',cursive;
+  cursor: pointer;
+}
+
+#don {
+  margin-left: 370px ;
+}
+
+#std {
+  margin-left: 100px;
+}
+
+#portalTitle {
+  margin-top: 710px;
+  color: white;
+  font-family: 'LazyDog',cursive;
+  text-align: center
 
 }
